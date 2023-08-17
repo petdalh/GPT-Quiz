@@ -721,6 +721,8 @@ const questions = [
   ],
 ];
 
+console.log("this is the api key: " + import.meta.env.VITE_API_KEY);
+
 const openai = new OpenAIApi(
   new Configuration({
     apiKey: import.meta.env.VITE_API_KEY,
@@ -765,7 +767,7 @@ function App() {
     try {
       openai
         .createChatCompletion({
-          model: "gpt-3.5-turbo",
+          model: "gpt-4",
           messages: [{ role: "user", content: prompt }],
         })
         .then((res) => {

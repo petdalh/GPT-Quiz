@@ -10,7 +10,7 @@ interface HintDisplayProps {
 
 const HintDisplay: React.FC<HintDisplayProps> = ({ hint, clue }) => {
     return (
-        <div className="w-1/4 flex justify-center items-center">
+        <div className="w-full flex justify-center items-center">
             {hint && <Latex>{clue}</Latex>}
         </div>
     );

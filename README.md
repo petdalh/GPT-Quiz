@@ -16,7 +16,7 @@ GPT-Quiz is a quiz application that leverages the GPT API to evaluate answers to
 
 1. **Clone the Repository**
    ```bash
-    cd GPT-Quiz
+    git clone https://github.com/petdalh/GPT-Quiz.git
     ```
    
 2. **Navigate to the directory**

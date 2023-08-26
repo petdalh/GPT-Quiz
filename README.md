@@ -20,9 +20,9 @@ GPT-Quiz is a quiz application that leverages the GPT API to evaluate answers to
     \`\`\`
    
 2. **Navigate to the directory**
-    \`\`\`bash
+    ```bash
     cd GPT-Quiz
-    \`\`\`
+    ```
 
 3. **Install Dependencies**
     \`\`\`bash

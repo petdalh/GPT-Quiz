@@ -33,17 +33,17 @@ GPT-Quiz is a quiz application that leverages the GPT API to evaluate answers to
 
 Create a \`.env\` file in the root directory and add your GPT API key:
 
-\`\`\`env
+```env
 VITE_API_KEY=your_api_key_here
-\`\`\`
+```
 
 ## Usage
 
 Run the development server:
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 Open your browser and navigate to \`http://localhost:3000\`.
 

@@ -15,9 +15,9 @@ GPT-Quiz is a quiz application that leverages the GPT API to evaluate answers to
 ## Installation
 
 1. **Clone the Repository**
-    \`\`\`bash
+    ```bash
     git clone https://github.com/petdalh/GPT-Quiz.git
-    \`\`\`
+    ```
    
 2. **Navigate to the directory**
     ```bash
@@ -25,9 +25,9 @@ GPT-Quiz is a quiz application that leverages the GPT API to evaluate answers to
     ```
 
 3. **Install Dependencies**
-    \`\`\`bash
+    ```bash
     npm install
-    \`\`\`
+    ```
 
 ## Configuration
 

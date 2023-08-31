@@ -12,6 +12,10 @@ GPT-Quiz is a quiz application that leverages the GPT API to evaluate answers to
 ![Screenshot of Application](./src/assets/display.png)
 
 
+- Hint button on the right displays hint
+- Navigation bar where you can select topic and change subject
+
+
 ## Prerequisites
 - Node.js
 - GPT API Key

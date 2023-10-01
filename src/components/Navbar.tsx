@@ -13,7 +13,7 @@ interface NavbarProps {
 
 
 const Navbar: React.FC<NavbarProps> = ({ questions, setTopic, setHint, topic, setSubject, subject }) => {
-    const algorithmThemes = ["Alle temaer", "Sorteringsalgoritmer", "Maks flyt"]; 
+    const algorithmThemes = ["Alle temaer", "Sorteringsalgoritmer", "Maks flyt", "Eksamen S23"]; 
     const statThemes = ["Alle temaer", "Regeresjon", "Forventningsverdi"];
     const topicNames = [[...algorithmThemes], [...statThemes]];
     console.log(questions[0])

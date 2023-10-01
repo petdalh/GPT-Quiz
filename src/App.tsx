@@ -370,6 +370,80 @@ const maxFlow = [
   },
 ];
 
+const EksamenS23 = [
+  {
+    id: 1,
+    questionText:
+      "Hva er et spenntre (Det trenger ikke være minimalt.)",
+    clue: "Hva kjennetegner en tre-struktur? hva menes med å spenne.",
+  },
+  {
+    id: 2,
+    questionText:
+    "Hvilket problem løser Floyd-Warshall? (Her er vi ikke ute etter bare navnet på problemet, men en svært kort beskrivelse av hva problemet er.)",
+    clue: "noe clue"
+  },
+  {
+    id: 3,
+    questionText:
+      "Dijkstra velger en node i hver iterasjon. Hvilken?",
+    clue: "prioriteringskø",
+  },
+  {
+    id: 4,
+    questionText:
+      "Tellesortering (counting sort) har bedre kjøretid enn f.eks. flettesortering (merge sort). Hva er det vi krever av input til tellesortering som gjør dette mulig?",
+    clue: "Tenk på datatypen og rekkevidden av tallene som tellesortering håndterer. Hva må være kjent på forhånd?",
+  },
+  {
+    id: 5,
+    questionText:
+      "Hva er konsekvensen av å finne en polynomisk algoritme for et problem i NPC?",
+    clue: "Reflekter over hva det ville bety for P=NP spørsmålet og andre problemer i NP",
+  },
+  {
+    id: 6,
+    questionText:
+      "Lurvik og Smartnes skal på togferie. Det går direktetog mellom mange av byene de skal besøke, og Lurvik vil finne en rute som går innom hver by nøyaktig én gang, om mulig. Smartnes mener det er urealistisk. Hva mener du? (Det er her snakk om å lage en effektiv algoritme for å løse problemet generelt.)",
+    clue: "Vurder problemet i lys av Traveling Salesman Problem (TSP) og dets kompleksitet. Kan det løses effektivt for alle tilfeller?",
+  },
+  {
+    id: 7,
+    questionText:
+      "Du skal finne et passord som består av n tegn fra et alfabet av størrelse k. Du prøver ett og ett passord (brute force). Hvor mange passord må du prøve før du finner det rette? Oppgi svaret i asymptotisk notasjon. (Du kan anta at du kjenner både n og k.)",
+    clue: "Tenk på antall mulige kombinasjoner for hvert tegn i passordet, og hvordan dette skalerer med lengden 'n' av passordet.",
+  },
+  {
+    id: 8,
+    questionText: `
+      Tre menn (Lurvik, Smartnes og Visdal) og tre kvinner (Gløgsund, Klokland og Flinckenhagen) har følgende preferanser: \n
+      
+      Lurvik: Gløgsund, Flinckenhagen, Klokland
+      Smartnes: Gløgsund, Klokland, Flinckenhagen
+      Visdal: Klokland, Flinckenhagen, Gløgsund\n
+      
+      Gløgsund: Lurvik, Smartnes, Visdal
+      Klokland: Visdal, Smartnes, Lurvik
+      Flinckenhagen: Lurvik, Smartnes, Visdal\n
+      
+      Lurvik er matchet med Flinckenhagen, Smartnes er matchet med Gløgsund og Visdal er matchet med Klokland. Er matchingen stabil, eller finnes det et blokkerende par (blocking pair)? Hvem er det, i så fall? Forklar kort.
+    `,
+    clue: "Stabil matching betyr at det ikke finnes et par som foretrekker hverandre over sine nåværende partnere. Tenk på hvordan du kan finne et slikt par.", 
+  },  
+  {
+    id: 9,
+    questionText:
+      "Løs følgende rekurrens: \n T(n) = 2T(n/2) + n/lg n. \n Oppgi svaret med asymptotisk notasjon.",
+    clue: "Tenk på master-teoremet og hvordan det kan brukes til å løse rekurrenser av denne typen.",
+  },
+  {
+    id: 10,
+    questionText:
+      "Hva er konsekvensen av å finne en polynomisk algoritme for et problem i NPC?",
+    clue: "Reflekter over hva det ville bety for P=NP spørsmålet og andre problemer i NP",
+  },
+]
+
 //Stats
 const statisticsQuestions = [
   {
@@ -712,8 +786,9 @@ const statisticsQuestions3 = [
   },
 ];
 
+
 const questions = [
-  [[...allTopics], [...sortingAlgorithms], [...maxFlow]],
+  [[...allTopics], [...sortingAlgorithms], [...maxFlow], [...EksamenS23]],
   [
     [...statisticsQuestions],
     [...statisticsQuestions2],
@@ -747,7 +822,9 @@ function App() {
     let prevNumber = currentQuestionIndex;
     let randomNum = prevNumber;
     while (randomNum === prevNumber) {
-      randomNum = Math.floor(Math.random() * 20);
+        
+      randomNum = Math.floor(Math.random() * 9);
+      
     }
     console.log("this is the random number: " + randomNum);
     setCurrentQuestionIndex(randomNum);
@@ -806,13 +883,17 @@ function App() {
       </div>
       <div className="fixed mt-40 left-10 right-10 z-10">
           <div className="flex w-full">
-            <div className="h-20 w-3/4 overflow-y-auto overflow-x-hidden">
-              <NextButton onClick={goToNextQuestion} />
+          
+            <div className="h-40 w-3/4 overflow-y-auto overflow-x-hidden">
+              
               <Question
                 questionText={
                   questions[subject][topic][currentQuestionIndex].questionText
                 }
               />
+            </div>
+            <div className="w-1/12 flex justify-center">
+            <NextButton onClick={goToNextQuestion} />
             </div>
             <div className="w-1/4 flex justify-center items-center">
               <HintButton onClick={setHint} />

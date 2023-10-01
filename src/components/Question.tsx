@@ -6,11 +6,26 @@ interface QuestionProps {
 }
 
 const Question: React.FC<QuestionProps> = ({ questionText }) => {
-return (
-    <h2 className="text-xl">
-    <Latex>{questionText}</Latex>
-    </h2>
-);
-}
+    const length = questionText.length;
+
+    let fontSizeClass = "text-xl"; 
+    if (length > 350) {
+        fontSizeClass = "text-l"; 
+    } else if (length > 550) {
+        fontSizeClass = "text-m"; 
+    }
+    return (
+      <>
+        {questionText.split('\n').map((line, index) => (
+          <React.Fragment key={index}>
+            <h2 className={fontSizeClass}>
+              <Latex>{line}</Latex>
+            </h2>
+            {line === "" && <br />}  
+          </React.Fragment>
+        ))}
+      </>
+    );
+};
 
 export default Question;

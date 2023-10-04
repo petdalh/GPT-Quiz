@@ -442,6 +442,53 @@ const EksamenS23 = [
       "Hva er konsekvensen av å finne en polynomisk algoritme for et problem i NPC?",
     clue: "Reflekter over hva det ville bety for P=NP spørsmålet og andre problemer i NP",
   },
+  {
+    id: 11,
+    questionText:
+      "Det følgende er hentet fra Counting-Sort:\n  11. for j = 1 downto 1\n12. {blank} = A[j]\n13. C[A[j]] = C[A[j]] - 1\n Hva skal være istedenfor {blank}?",
+    clue: "Tenk på hvordan Counting Sort bruker hjelpearrayet C til å telle forekomster av hvert unike element i A.",
+  },
+  {
+    id: 12,
+    questionText:
+      "Tabellen A = ⟨9, 8, 5, 7, 1, 3, 2, 4, 6⟩ representerer en haug. Hvordan ser tabellen ut etter første iterasjon av Heapsort?",
+    clue: "Tenk på hvordan Heapsort bygger en maks-heap fra en liste med elementer.",
+  },
+  {
+    id: 13,
+    questionText: "Flytnett (flow networks) kan defineres på litt forskjellige vis, men i versjonen i pensum tillates ikke antiparallelle kanter (dvs., at man både har en kant fra u til v og en kant fra v til u). Hvor stor begrensning er dette? Forklar kort.",
+    clue: "Tenk på hvordan antiparallelle kanter kan påvirke flytverdien.",
+  },
+  {
+    id: 14,
+    questionText: "Algoritme 2 finner antall mulige permutasjoner av elementene i mengden S, rekursivt. Hva taler for og imot bruk av memoisering for å optimere den? Permutations(S) \n if S = Ø\n  return 1\n else n = 0\n for each element x ∈ S\n  n = n + Permutations(S - {x})\n return n",
+    clue: "Tenk på hvor mange ganger en delprobleminstans blir løst."
+  },
+  {
+    id: 15,
+    questionText: "Beskriv hvordan du kan bruke rekursjon til å finne avstanden fra startnoden s til en gitt node v i en vektet, rettet graf.\n Merk: Det er forventet at løsningen vil ha eksponentiell kjøretid.",
+    clue: "Tenk på hvordan du kan utforske alle mulige stier fra startnoden til noden v."
+  },
+  {
+    id: 16,
+    questionText: "Et byggefirma har flere store oppdrag og skal fordele sine ansatte på disse. Hvert prosjekt har et sett med roller (tømrer, elektriker, rørlegger, etc.) og et antall som trengs av hver av disse. Hver ansatt er kompetent til å fylle én eller flere slike roller, men kan maksimalt delta i ett prosjekt, og fyller da nøyaktig én rolle. For å holde reiseavstandene nede kan hver ansatt bare bli tilordnet et prosjekt innenfor en gitt avstand fra hjemstedet. Hvordan ville du ha funnet en gyldig fordeling?",
+    clue: "Tenk på hvordan du kan representere problemet som et flytnettverk.",
+  },
+  {
+    id: 17,
+    questionText: "I beviset for at CIRCUIT-SAT er NP-komplett konstrueres en logisk krets som simulerer en datamaskin som utfører en verifikasjonsalgoritme. Hva er input for denne kretsen?",
+    clue: "Tenk på hvordan en verifikasjonsalgoritme fungerer.", 
+  },
+  {
+    id: 18,
+    questionText: "Din venn Gløgsund har klart å slette alle mellomrom og all tegnsetting i en avhandling hun skriver på, og hun vil ha din hjelp til å splitte teksten opp i enkelt-ord. Det du har å hjelpe deg med er en liste med gyldige ord, og en oversikt over ord som aldri forekommer ved siden av hverandre. Beskriv en algoritme som løser problemet. Det kan være flere gyldige løsninger. I så fall holder det at du finner én av dem.",
+    clue: "Tenk på hvordan du kan representere problemet som et flytnettverk.",
+  },
+  {
+    id: 19,
+    questionText: "Anta at du har en prosedyre A som avgjør beslutningsproblemet VERTEXCOVER i konstant tid. Beskriv hvordan du kan bruke A til å finne et minst mulig nodedekke. Løsningen din skal ha så lav asymptotisk kjøretid som mulig. Gitt denne kjøretiden, skal den bruke så få kall til A som mulig. (Du skal altså ikke øke den asymptotiske kjøretiden bare for å redusere antall kall til A.)",
+    clue: "Tenk på hvordan du kan bruke A til å finne et minst mulig nodedekke.",
+  }
 ]
 
 //Stats
@@ -823,7 +870,7 @@ function App() {
     let randomNum = prevNumber;
     while (randomNum === prevNumber) {
         
-      randomNum = Math.floor(Math.random() * 9);
+      randomNum = Math.floor(Math.random() * 20);
       
     }
     console.log("this is the random number: " + randomNum);
@@ -884,19 +931,17 @@ function App() {
       <div className="fixed mt-40 left-10 right-10 z-10">
           <div className="flex w-full">
           
-            <div className="h-40 w-3/4 overflow-y-auto overflow-x-hidden">
-              
-              <Question
-                questionText={
-                  questions[subject][topic][currentQuestionIndex].questionText
-                }
-              />
-            </div>
-            <div className="w-1/12 flex justify-center">
-            <NextButton onClick={goToNextQuestion} />
-            </div>
-            <div className="w-1/4 flex justify-center items-center">
-              <HintButton onClick={setHint} />
+          <div className="h-40 w-full overflow-y-auto overflow-x-hidden flex">
+            <div className="w-full min-w-0 overflow-hidden">
+                <Question
+                  questionText={
+                    questions[subject][topic][currentQuestionIndex].questionText
+                  }
+                />
+              </div>
+              <div className="flex h-2/4 justify-end">
+                <NextButton onClick={goToNextQuestion} />
+              </div>
             </div>
           </div>
           <div className="flex w-full">
@@ -910,12 +955,16 @@ function App() {
                 }
               }}
             />
-            <div className="w-1/4 flex justify-center items-center">
-              <HintDisplay hint={hint} clue={questions[subject][topic][currentQuestionIndex].clue} />
-            </div>
 
         </div>
         <FeedbackDisplay feedback={feedback} isLoading={isLoading} />
+        {/* <div className=" flex justify-center items-center">
+        <HintDisplay hint={hint} clue={questions[subject][topic][currentQuestionIndex].clue} />
+        </div>
+            <div className="flex justify-center items-center">
+              <HintButton onClick={setHint} />
+            </div> */}
+
       
       
       </div>

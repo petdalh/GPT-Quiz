@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ questions, setTopic, setHint, topic, se
         <div className="w-full bg-gray-900 p-4 rounded-lg mb-20">
             <ul className="flex flex-row justify-center" role="navigation" aria-label="Pagination">
                 
-                {questions[0].map((_, index) => (
+                {questions[subject].map((_, index) => (
                     <li key={index}>
                         <button 
                             onClick={() => {

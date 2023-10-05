@@ -445,51 +445,178 @@ const EksamenS23 = [
   {
     id: 11,
     questionText:
-      "Det følgende er hentet fra Counting-Sort:\n  11. for j = 1 downto 1\n12. {blank} = A[j]\n13. C[A[j]] = C[A[j]] - 1\n Hva skal være istedenfor {blank}?",
-    clue: "Tenk på hvordan Counting Sort bruker hjelpearrayet C til å telle forekomster av hvert unike element i A.",
-  },
-  {
-    id: 12,
-    questionText:
       "Tabellen A = ⟨9, 8, 5, 7, 1, 3, 2, 4, 6⟩ representerer en haug. Hvordan ser tabellen ut etter første iterasjon av Heapsort?",
     clue: "Tenk på hvordan Heapsort bygger en maks-heap fra en liste med elementer.",
   },
   {
-    id: 13,
+    id: 12,
     questionText: "Flytnett (flow networks) kan defineres på litt forskjellige vis, men i versjonen i pensum tillates ikke antiparallelle kanter (dvs., at man både har en kant fra u til v og en kant fra v til u). Hvor stor begrensning er dette? Forklar kort.",
     clue: "Tenk på hvordan antiparallelle kanter kan påvirke flytverdien.",
   },
   {
-    id: 14,
-    questionText: "Algoritme 2 finner antall mulige permutasjoner av elementene i mengden S, rekursivt. Hva taler for og imot bruk av memoisering for å optimere den? Permutations(S) \n if S = Ø\n  return 1\n else n = 0\n for each element x ∈ S\n  n = n + Permutations(S - {x})\n return n",
-    clue: "Tenk på hvor mange ganger en delprobleminstans blir løst."
-  },
-  {
-    id: 15,
+    id: 13,
     questionText: "Beskriv hvordan du kan bruke rekursjon til å finne avstanden fra startnoden s til en gitt node v i en vektet, rettet graf.\n Merk: Det er forventet at løsningen vil ha eksponentiell kjøretid.",
     clue: "Tenk på hvordan du kan utforske alle mulige stier fra startnoden til noden v."
   },
   {
-    id: 16,
+    id: 14,
     questionText: "Et byggefirma har flere store oppdrag og skal fordele sine ansatte på disse. Hvert prosjekt har et sett med roller (tømrer, elektriker, rørlegger, etc.) og et antall som trengs av hver av disse. Hver ansatt er kompetent til å fylle én eller flere slike roller, men kan maksimalt delta i ett prosjekt, og fyller da nøyaktig én rolle. For å holde reiseavstandene nede kan hver ansatt bare bli tilordnet et prosjekt innenfor en gitt avstand fra hjemstedet. Hvordan ville du ha funnet en gyldig fordeling?",
     clue: "Tenk på hvordan du kan representere problemet som et flytnettverk.",
   },
   {
-    id: 17,
+    id: 15,
     questionText: "I beviset for at CIRCUIT-SAT er NP-komplett konstrueres en logisk krets som simulerer en datamaskin som utfører en verifikasjonsalgoritme. Hva er input for denne kretsen?",
     clue: "Tenk på hvordan en verifikasjonsalgoritme fungerer.", 
   },
   {
-    id: 18,
+    id: 16,
     questionText: "Din venn Gløgsund har klart å slette alle mellomrom og all tegnsetting i en avhandling hun skriver på, og hun vil ha din hjelp til å splitte teksten opp i enkelt-ord. Det du har å hjelpe deg med er en liste med gyldige ord, og en oversikt over ord som aldri forekommer ved siden av hverandre. Beskriv en algoritme som løser problemet. Det kan være flere gyldige løsninger. I så fall holder det at du finner én av dem.",
     clue: "Tenk på hvordan du kan representere problemet som et flytnettverk.",
   },
   {
-    id: 19,
+    id: 17,
     questionText: "Anta at du har en prosedyre A som avgjør beslutningsproblemet VERTEXCOVER i konstant tid. Beskriv hvordan du kan bruke A til å finne et minst mulig nodedekke. Løsningen din skal ha så lav asymptotisk kjøretid som mulig. Gitt denne kjøretiden, skal den bruke så få kall til A som mulig. (Du skal altså ikke øke den asymptotiske kjøretiden bare for å redusere antall kall til A.)",
     clue: "Tenk på hvordan du kan bruke A til å finne et minst mulig nodedekke.",
   }
 ]
+
+const EksamenH22 = [
+  {
+    id: 1,
+    questionText: "Hva er kjøretiden til Dijkstra med en binærhaug som prioritetskø?",
+    clue: "Tenk på kompleksiteten for binærhaug-operasjoner.",
+  },
+  {
+    id: 2,
+    questionText: "Hvorfor er ikke memoisering nyttig når man bruker designmetoden splitt og hersk (divide and conquer)?",
+    clue: "Vurder om delproblemer overlapper.",
+  },
+  {
+    id: 3,
+    questionText: "Hva brukes kjeding (chaining) til?",
+    clue: "Relatert til håndtering av kollisjoner i hash-tabeller.",
+  },
+  {
+    id: 4,
+    questionText: "Gi nedre og øvre asymptotiske grenser for uttrykket n + Θ(n^2) + O(n^3).",
+    clue: "Fokuser på den dominerende termen.",
+  },
+  {
+    id: 5,
+    questionText: "Forenkle uttrykket Ω(n + Θ(n^2) + O(n^3)).",
+    clue: "Igjen, se på den dominerende termen.",
+  },
+  {
+    id: 6,
+    questionText: "Løs rekurrensen T(n) = 4T(n/2) + n^2 lg n. Uttrykk svaret med Θ-notasjon.",
+    clue: "Master-teoremet kan være nyttig.",
+  },
+  {
+    id: 7,
+    questionText: "Start med et tomt binært søketre, og sett så inn følgende verdier, i rekkefølge, med Tree-Insert: ⟨7, 1, 0, 5, 4, 8, 3, 2, 9, 6⟩. Utfør deretter Inorder-Tree-Walk på rotnoden i det resulterende treet. Hva skriver algoritmen ut?",
+    clue: "Inorder-Tree-Walk gir sortert output.",
+  },
+  {
+    id: 8,
+    questionText: "Anta at du legger inn en sjekk i Bellman-Ford som avslutter algoritmen dersom ingen avstandsestimater endrer seg i løpet av en iterasjon. Hva blir da den totale kjøretiden, i beste tilfelle, om du antar at det finnes stier fra startnoden til alle andre?",
+    clue: "Tenk på antall iterasjoner i beste tilfelle.",
+  },
+  {
+    id: 9,
+    questionText: "Hva er det minste og største antallet elementer i en binærhaug med høyde h?",
+    clue: "Relatert til binært tre sin struktur.",
+  },
+  {
+    id: 10,
+    questionText: "Hva sier heltallsteoremet (the integrality theorem)? Forklar kort med egne ord.",
+    clue: "Fokuser på forholdet mellom heltall og rasjonelle tall i optimal løsning.",
+  },
+  {
+    id: 11,
+    questionText: "Hva er restkapasitet (residual capacity) og hvordan regner man det ut? Forklar kort.",
+    clue: "Relatert til flytnettverk.",
+  },
+  {
+    id: 12,
+    questionText: "Din venn Smartnes mener at grafisomorfi er minst like vanskelig som faktorisering. For å etablere dette tenker hun å vise at en løsning på det ene problemet kan, med litt ekstra beregning, brukes til å løse det andre. Forklar hvilket problem sin løsning som i så fall må kunne brukes på det andre problemet, og hvorfor det fører til den ønskede konklusjonen.",
+    clue: "Tenk på reduksjonsmetoder i kompleksitetsteori.",
+  },
+  {
+    id: 13,
+    questionText: "Hvilket problem løser algoritme 1, dersom den kalles som følger, der A[1 : n] er en tabell med tall? Randomized-Select(A, 1, n, 0). Forklar kort.",
+    clue: "Se på hva '0' representerer i denne konteksten.",
+  },
+  {
+    id: 14,
+    questionText: "Din venn Gløgsund har laget to versjoner av Ford–Fulkerson-metoden der hun bruker henholdsvis Dijkstra og Transitive-Closure til å finne forøkende stier. Hvilke av disse to metodene vil garantert finne maks-flyt i polynomisk tid? Forklar kort.",
+    clue: "Vurder effektiviteten av å finne forøkende stier.",
+  },
+  {
+    id: 15,
+    questionText: "Vi sier at en kvinne og en mann er ment for hverandre om de ender opp sammen i alle mulige stabile matchinger. Konstruer en effektiv algoritme som bestemmer om en kvinne og en mann er ment for hverandre.",
+    clue: "Tenk på Gale-Shapley algoritmen.",
+  },
+  {
+    id: 16,
+    questionText: "Hvordan kan vi løse delsumproblemet (the subset-sum problem) i polynomisk tid hvis den ønskede delsummen (target) er oppgitt i entallssystemet? I entallssystemet representeres k som en streng 111 · · · 1 av lengde k.",
+    clue: "Se på hvordan målet er representert.",
+  },
+  {
+    id: 17,
+    questionText: "Et kongerike består av flere regioner. Kongen ønsker å bygge en mur som går rundt én eller flere av regionene, inkludert den som inneholder det kongelige slott. Byggekostnadene varierer med terrenget, og kongen har bedt deg om å finne den billigste løsningen. Hvordan vil du gå frem?",
+    clue: "Du kan anta at muren følger regiongrenser.",
+  }
+]
+
+const EksamenV21 = [
+  {
+    id: 1,
+    questionText: "Hvilke to hovedmetoder har vi for å velge pivot? Er en av dem bedre, og i så fall på hvilken måte? Forklar kort med egne ord.",
+    clue: "",
+  },
+  {
+    id: 2,
+    questionText: "I det følgende, anta: • a1 = a2, b1 = b2, c1 = c2 og d1 = d2 • a1 < b1 < c1 < d1. Sorter følgende sekvens med Insertion-Sort: ⟨d2, a1, b1, c2, b2, a2, c1, d1⟩. Oppgi den resulterende sekvensen. Hvilken egenskap er det vi ser at algoritmen har her? Gjelder det generelt (dvs., for alle instanser)? Forklar kort.",
+    clue: "Selv om f.eks. a1 er lik a2, må du skille mellom dem, siden det kan være satellittdata knyttet til dem.",
+  },
+  {
+    id: 3,
+    questionText: "Hva er kjeding (chaining)? Forklar kort, med egne ord, hva det brukes til og hvordan det fungerer.",
+    clue: "",
+  },
+  {
+    id: 4,
+    questionText: "Dine venner Lurvik og Smartnes vil implementere Prims algoritme med en binærhaug (binary heap) som prioritetskø Q. Lurvik bygger Q ved å legge inn én og én node, med Min-Heap-Insert, mens Smartnes mener det gir bedre asymptotisk kjøretid totalt sett å bruke Build-Min-Heap. Hva mener du? Forklar kort.",
+    clue: "",
+  },
+  {
+    id: 5,
+    questionText: "Diskuter kort likheter og forskjeller mellom BFS, Prim og Dijkstra.",
+    clue: "",
+  },
+  {
+    id: 6,
+    questionText: "Forenkle følgende uttrykk: O(n^a) + Ω(n^b) + Θ(n^c). Uttrykk svaret med asymptotisk notasjon. Forklar kort.",
+    clue: "Du kan anta at a, b og c er positive heltallskonstanter.",
+  },
+  {
+    id: 7,
+    questionText: "Hva er sertifikater, og hvilken rolle spiller de i definisjonene til NP og co-NP?",
+    clue: "",
+  },
+  {
+    id: 8,
+    questionText: "I en nettavis legges det ut nyhetssaker med ujevne mellomrom, og planen er at brukerne skal motta e-post om disse, der hver e-post kan inneholde flere nyhetssaker. Kriteriene for utsending er som følger: • Det skal aldri gå mer enn k timer fra en nyhetssak publiseres til den inngår i en e-post; og • Det skal sendes ut så få e-poster som mulig. Hvordan vil du løse problemet hvis du på forhånd vet når sakene skal publiseres? Hva om du ikke vet dette? Forklar hvorfor løsningen din blir riktig.",
+    clue: "Svar relativt grundig (f.eks. ca. 100–200 ord).",
+  },
+  {
+    id: 9,
+    questionText: "Castingdirektør Gløgsund skal besette rollene i et sett med kortfilmer. Hun har et sett med kandidat-skuespillere, der hver skuespiller er aktuell for noen av rollene, men ikke alle. Hun ønsker ikke å overeksponere noen av skuespillerne, så hun vil bruke hver av dem i maksimalt 1/3 av filmene. Hver skuespiller kan maksimalt få én rolle per film. Blant skuespillerne finnes det en del rivaler. Hvis A og B er rivaler, er enten bare én av dem aktuell for roller i en gitt film X, ellers så er A og B aktuelle for de samme rollene i film X. To rivaler kan ikke bli med i samme film. Hvordan kan Gløgsund finne sin rollebesetning?",
+    clue: "Du kan anta at det finnes en løsning der alle rollene besettes.",
+  }
+]
+
+
 
 //Stats
 const statisticsQuestions = [
@@ -835,7 +962,7 @@ const statisticsQuestions3 = [
 
 
 const questions = [
-  [[...allTopics], [...sortingAlgorithms], [...maxFlow], [...EksamenS23]],
+  [[...allTopics], [...sortingAlgorithms], [...maxFlow], [...EksamenS23], [...EksamenH22], [...EksamenV21]],
   [
     [...statisticsQuestions],
     [...statisticsQuestions2],
@@ -870,7 +997,7 @@ function App() {
     let randomNum = prevNumber;
     while (randomNum === prevNumber) {
         
-      randomNum = Math.floor(Math.random() * 20);
+      randomNum = Math.floor(Math.random() * questions[subject][topic].length);
       
     }
     console.log("this is the random number: " + randomNum);
@@ -931,8 +1058,8 @@ function App() {
       <div className="fixed mt-40 left-10 right-10 z-10">
           <div className="flex w-full">
           
-          <div className="h-40 w-full overflow-y-auto overflow-x-hidden flex">
-            <div className="w-full min-w-0 overflow-hidden">
+          <div className="h-80 w-full overflow-y-auto overflow-x-hidden flex">
+            <div className="w-full min-w-0 overflow-y-auto ">
                 <Question
                   questionText={
                     questions[subject][topic][currentQuestionIndex].questionText

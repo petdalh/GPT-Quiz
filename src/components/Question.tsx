@@ -9,9 +9,9 @@ const Question: React.FC<QuestionProps> = ({ questionText }) => {
     const length = questionText.length;
 
     let fontSizeClass = "text-xl"; 
-    if (length > 350) {
+    if (length > 1000) {
         fontSizeClass = "text-l"; 
-    } else if (length > 550) {
+    } else if (length > 2000) {
         fontSizeClass = "text-m"; 
     }
     return (

@@ -40,7 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ questions, setTopic, setHint, topic, se
                     </li>
                 ))}
                 <li>
-                    <DropdownMenu setSubject={setSubject} />
+                    <DropdownMenu 
+                    setTopic={setTopic} 
+                    setSubject={setSubject} />
                 </li>
             </ul>
         </div>

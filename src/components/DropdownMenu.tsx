@@ -4,13 +4,14 @@ import { ChevronDownIcon } from '@heroicons/react/solid';
 
 interface DropdownMenuProps {
     setSubject: (subject: number) => void;
+    setTopic: (topic: number) => void;
 }
 
 function classNames(...classes: (string | undefined | null | false)[]): string {
     return classes.filter(Boolean).join(' ');
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ setSubject }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ setSubject, setTopic }) => {
     return (
         <Menu as="div" className="relative inline-block text-left">
         <div>
@@ -34,7 +35,10 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ setSubject }) => {
                 <Menu.Item>
                 {({ active }) => (
                     <button
-                        onClick={() => setSubject(0)}
+                    onClick={() => {
+                        setSubject(0);
+                        setTopic(0);
+                      }}
                         className={classNames(
                             active ? 'bg-gray-900 text-white w-full' : 'text-white',
                             'block px-4 py-2 text-sm w-full text-left'
@@ -47,7 +51,10 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ setSubject }) => {
                 <Menu.Item>
                 {({ active }) => (
                     <button
-                        onClick={() => setSubject(1)}
+                    onClick={() => {
+                        setSubject(1);
+                        setTopic(0);
+                      }}
                         className={classNames(
                             active ? 'bg-gray-900 text-white w-full text-left' : 'text-white',
                             'block px-4 py-2 text-sm w-full text-left'

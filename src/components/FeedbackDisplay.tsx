@@ -9,7 +9,7 @@ interface FeedbackDisplayProps {
 
 const FeedbackDisplay: React.FC<FeedbackDisplayProps> = ({ feedback, isLoading }) => {
     return (
-        <div className=' justify-center py-20 rounded-lg yourClass'>
+        <div className='flex justify-center bg-transparent relative rounded-lg w-full h-20'>
             {feedback && <Latex>{feedback}</Latex>}
             {isLoading && <Spinner aria-label="Default status example" />}
         </div>

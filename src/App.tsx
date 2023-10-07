@@ -1,5 +1,10 @@
+// React imports
 import { useState } from "react";
+
+// Library imports
 import { Configuration, OpenAIApi } from "openai";
+
+// Component imports
 import Navbar from "./components/Navbar";
 import Question from "./components/Question";
 import NextButton from "./components/NextButton";
@@ -8,11 +13,11 @@ import FeedbackDisplay from "./components/FeedbackDisplay";
 import HintButton from "./components/HintButton";
 import Footer from "./components/Footer";
 import HintDisplay from "./components/HintDisplay";
+
+// Data imports
 import { questions } from "./questions";
 
 
-
-console.log("this is the api key: " + import.meta.env.VITE_API_KEY);
 
 const openai = new OpenAIApi(
   new Configuration({
@@ -31,10 +36,12 @@ function App() {
   const [hint, setHint] = useState(false);
   const [subject, setSubject] = useState<number>(0);
 
+  const resetQuestionIndex = () => setCurrentQuestionIndex(0);
+
+
   const goToNextQuestion = () => {
-    console.log(topic);
     setFeedback("");
-    setHint(false);
+    // setHint(false);
     let prevNumber = currentQuestionIndex;
     let randomNum = prevNumber;
     while (randomNum === prevNumber) {
@@ -42,18 +49,18 @@ function App() {
       randomNum = Math.floor(Math.random() * questions[subject][topic].length);
       
     }
-    console.log("this is the random number: " + randomNum);
     setCurrentQuestionIndex(randomNum);
   };
 
   const handleSubmit = async () => {
-    const prompt =
-      "Er dette svaret: " +
-      userAnswer +
-      ", ett korrekt svar på dette spørsmålet: " +
-      questions[subject][topic][currentQuestionIndex].questionText +
-      "? Svar kort og presist med 2-3 setninger";
-    console.log("this is the prompt: " + prompt);
+
+    const prompt = `
+    Fag: ${subject},
+    Spørsmål: ${questions[subject][topic][currentQuestionIndex].questionText},
+    Brukerens svar: ${userAnswer},
+    
+    Er svaret riktig? Hvis ja, hvorfor? Hvis nei, hva er det riktige svaret og hvorfor?
+  `;
 
     setIsLoading(true); // Start loading
 
@@ -79,14 +86,14 @@ function App() {
     }
     setUserAnswer(""); // Clear the input after submitting
 
-    const setHint = () => {
-      setHint(true);
-    };
+    // const setHint = () => {
+    //   setHint(true);
+    // };
   };
 
   return (
     <>
-    <div className="fixed top-0 left-0 right-0 z-10">
+    <div className="fixed top-0 left-0 right-0">
       {/* Navbar */}
       <Navbar
         setTopic={setTopic}
@@ -95,38 +102,40 @@ function App() {
         setSubject={setSubject}
         questions={questions}
         subject={subject}
+        resetQuestionIndex={resetQuestionIndex} 
       />
       </div>
-      <div className="fixed mt-40 left-10 right-10 z-10">
-          <div className="flex w-full">
-          
-          <div className="h-80 w-full overflow-y-auto overflow-x-hidden flex">
-            <div className="w-full min-w-0 overflow-y-auto ">
-                <Question
-                  questionText={
-                    questions[subject][topic][currentQuestionIndex].questionText
-                  }
-                />
-              </div>
-              <div className="flex h-2/4 justify-end">
-                <NextButton onClick={goToNextQuestion} />
-              </div>
-            </div>
-          </div>
-          <div className="flex w-full">
-            <AnswerBox
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSubmit();
-                }
-              }}
-            />
-
+      <div className="fixed mt-40 left-10 right-10">
+      <div className="flex flex-col w-full overflow-y-auto overflow-x-hidden">
+      <div className="h-[120px] flex justify-center overflow-y-auto mb-[10px]"> {/* Fixed height and overflow-y set */}
+        <Question
+          questionText={
+            questions[subject][topic][currentQuestionIndex].questionText
+          }
+        />
+      </div>
+        <div className="flex justify-end">
+          <NextButton onClick={goToNextQuestion} />
         </div>
-        <FeedbackDisplay feedback={feedback} isLoading={isLoading} />
+        <div className="flex mb-30">
+          <AnswerBox
+            value={userAnswer}
+            onChange={(e) => setUserAnswer(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleSubmit();
+              }
+            }}
+          />
+        </div>
+        <div className="flex"> {/* Wrapped FeedbackDisplay in a flex div */}
+          <FeedbackDisplay feedback={feedback} isLoading={isLoading} />
+        </div>
+      </div>
+        
+
+        
         {/* <div className=" flex justify-center items-center">
         <HintDisplay hint={hint} clue={questions[subject][topic][currentQuestionIndex].clue} />
         </div>
@@ -137,7 +146,7 @@ function App() {
       
       
       </div>
-      <div className="fixed bottom-0 left-0 right-0 z-0">
+      <div className="fixed bottom-0 left-0 right-0 z-100">
         <Footer />
       </div>
     </>
